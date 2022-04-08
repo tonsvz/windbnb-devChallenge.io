@@ -1,5 +1,13 @@
+// Google fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap'); //Poppins 500-600
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap'); //Mulish 400
 .App {
   text-align: center;
+}
+
+ul, li {
+  text-decoration: none;
+  list-style: none;
 }
 
 .App-logo {
