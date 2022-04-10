@@ -3,34 +3,66 @@ import "./Overlay.scss";
 import { FaSearch } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import Counter from "../Counter/Counter";
+import data from "../stays.json";
 
-const Overlay = () => {
+const Overlay = ({ toggleStatus }) => {
   const [adultCounter, setAdultCounter] = useState(0);
   const [childCounter, setChildCounter] = useState(0);
   const [petCounter, setPetCounter] = useState(0);
+  const [City, setCity] = useState("Whole, Finland ");
+
+  const cities = {
+    city1: "Helsinki",
+    city2: "Turku",
+    city3: "Oulu",
+    city4: "Vaasa",
+  };
+
   return (
-    <div className="overlay-container">
+    <div
+      className={
+        toggleStatus
+          ? "overlay-container overlay-container-show"
+          : "overlay-container"
+      }
+    >
       <div className="overlay-input-wrapper">
         <div className="location-wrapper">
           <div className="location-input">
             <p>Location</p>
-            <div>Helsinki, Finland</div>
+            <div>{City}</div>
           </div>
           <div className="location-list">
             <ul>
-              <li>
+              <li
+                onClick={() => {
+                  setCity(`${cities.city1}, Finland`);
+                }}
+              >
                 <MdLocationOn className="location-icon" /> &nbsp; Helsinki,
                 Finland
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  setCity(`${cities.city2}, Finland`);
+                }}
+              >
                 {" "}
                 <MdLocationOn className="location-icon" /> &nbsp; Turku, Finland
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  setCity(`${cities.city3}, Finland`);
+                }}
+              >
                 {" "}
                 <MdLocationOn className="location-icon" /> &nbsp; Oulu, Finland
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  setCity(`${cities.city4}, Finland`);
+                }}
+              >
                 {" "}
                 <MdLocationOn className="location-icon" /> &nbsp; Vaasa, Finland
               </li>
@@ -39,6 +71,7 @@ const Overlay = () => {
         </div>
         <div className="guest-wrapper">
           <div className="guest-input">
+            <p>Guests</p>
             <p>
               <span>
                 {adultCounter} {adultCounter !== 1 ? "Adults" : "Adult"}, &nbsp;
@@ -52,18 +85,18 @@ const Overlay = () => {
               guest="Adult"
               age="Age: 13 or above"
               increment={() => setAdultCounter(adultCounter + 1)}
-              decrement={() => setAdultCounter(adultCounter - 1)}
+              decrement={() => setAdultCounter(Math.max(0, adultCounter - 1))}
             />
             <Counter
               guest="Kids"
-              age="Age: 2 or above"
+              age="Age: 2 - 12"
               increment={() => setChildCounter(childCounter + 1)}
-              decrement={() => setChildCounter(childCounter - 1)}
+              decrement={() => setChildCounter(Math.max(0, childCounter - 1))}
             />
             <Counter
               guest="Pets "
               increment={() => setPetCounter(petCounter + 1)}
-              decrement={() => setPetCounter(petCounter - 1)}
+              decrement={() => setPetCounter(Math.max(0, petCounter - 1))}
             />
           </div>
         </div>

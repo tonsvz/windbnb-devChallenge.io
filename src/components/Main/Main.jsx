@@ -13,7 +13,7 @@ const Main = () => {
         </div>
       </div>
 
-      <div className="places-gallery">
+      <div className="places-gallery places-gallery-shadow">
         {placesData.map((value, index) => {
           Object.assign(value, { index });
           return (

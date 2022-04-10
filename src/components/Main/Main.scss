@@ -1,145 +1,135 @@
-
-.card-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 24px; 
-    transition: transform 250ms, visibility 150ms ease-in;
-
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  transition: transform 250ms, visibility 150ms ease-in;
 }
 
-.card-img:hover{
-cursor: pointer;
-transform: scale(1.15);
-border-radius: 24px; 
-
+.card-img:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+  border-radius: 24px;
 }
 
-.main-title{
+.main-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  h2 {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    h2{
-        display: flex;
-        margin-left: 60px;
-        font-weight: 700;
-        color: #333333;
-        font-family: 'Montserrat',sans-serif;
-    }
+    margin-left: 60px;
+    font-weight: 700;
+    color: #333333;
+    font-family: "Montserrat", sans-serif;
+  }
 
-    p{
-        color: red;
-        margin-right: 55px;
-        font-family: 'Montserrat',sans-serif;
-        color: #4F4F4F;
-        font-weight: 500;
-    }
+  p {
+    color: red;
+    margin-right: 55px;
+    font-family: "Montserrat", sans-serif;
+    color: #4f4f4f;
+    font-weight: 500;
+  }
 }
 
-
-
-
-.places-gallery{
-    display: grid;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;   
-    gap: 2rem;  
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));   
-    padding: 3rem;
+.place-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 80px;
 }
 
-.place-container{
+.places-gallery {
+  display: grid;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  padding: 3rem;
+}
+
+.img-wrapper {
+  //   width: 400px;
+  height: 269px;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.card {
+  width: 400px;
+  height: 269px;
+  .card-description {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;    
-    margin-bottom: 80px;
-}
-
-.card{
-    width: 500px;
-    height: 269px;
-    .card-description{
-        display: flex;
-        color: #333333;
-        font-size: 16px;
-        font-family: 'Montserrat',sans-serif;
-        font-weight: 600;
-        line-height: 16.6px;
-        margin-top: 10px;
-        
-    }
-}
-
-.img-wrapper{
-    width: 500px;
-    height: 269px;
-    overflow: hidden;
-    border-radius: 24px;
-}
-
-
-
-.super-host{
-    width: 40%;
-    display: flex;
-    justify-content: flex-start;
-    height: 20px;
-}
-
-.no-super-host{
-    display:none
-}
-
-.room-description{
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
+    color: #333333;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    line-height: 16.6px;
     margin-top: 10px;
+  }
 }
 
-.rating-description{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    
-p{
+.super-host {
+  width: 40%;
+  display: flex;
+  justify-content: flex-start;
+  height: 20px;
+}
+
+.no-super-host {
+  display: none;
+}
+
+.room-description {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.rating-description {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  p {
     color: #828282;
-    font-family: 'Montserrat',sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    
-}
+  }
 
-.star-rating-icon{
-    color: #EB5757;
+  .star-rating-icon {
+    color: #eb5757;
     font-size: 17px;
     transform: translateY(4px);
-}
-}
-
-.no-sh{
-    display: none;
+  }
 }
 
-.sh{
-    border: 1px solid #4f4f4f;
-    border-radius: 12px;
-    margin-left: 3px;
-    
-    p{
-        display: flex;
-        justify-content: center;
-        margin-top: 2px;
-        width: 100px;
-        font-size: 12px;
-        font-family: 'Montserrat',sans-serif;
-        font-weight: 700;
-        text-transform: uppercase;
-        text-align: center;
-        color: #4f4f4f;
-    }
+.no-sh {
+  display: none;
+}
+
+.sh {
+  border: 1px solid #4f4f4f;
+  border-radius: 12px;
+  margin-left: 3px;
+
+  p {
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+    width: 100px;
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    color: #4f4f4f;
+  }
 }
