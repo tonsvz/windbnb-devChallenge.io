@@ -1,53 +1,38 @@
-.counter-container {
-  display: flex;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  justify-content: center;
-  gap: 1.5rem;
-
-  .guest-age {
+.counter-container{
     display: flex;
-    flex-direction: column;
-  }
-
-  p:nth-child(1) {
-    font-family: "Mulish", sans-serif;
-    font-weight: 800;
-    color: #333333;
-  }
-
-  p {
-    font-family: "Mulish", sans-serif;
-    color: #bdbdbd;
-  }
-
-  .button-counter-wrapper {
-    display: flex;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
     justify-content: center;
-    align-items: center;
-    margin-left: 20px;
-    gap: 1rem;
-    button {
-      padding: 8px 15px;
-      border-radius: 12px;
-      background-color: #fff;
-      outline: none;
-      border: 1px solid #e6e6e6;
-      cursor: pointer;
+    gap: 1.5rem;
+
+    .guest-age{
+        display: flex;
+        flex-direction: column;
+
     }
-  }
+    
+    p:nth-child(1){
+        font-weight: 800;
+    }
+
+    .button-counter-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 20px;
+        gap: 1rem;
+        button{
+            padding: 8px 9.1px;
+        }
+    }
+
+   
+}
+.counter-container:nth-child(3){
+    .button-counter-wrapper{
+        transform:translateX(37px)
+    }
 }
 
-.counter-container:nth-child(3) {
-  .button-counter-wrapper {
-    transform: translateX(46px);
-  }
-}
-
-.counter-container:nth-child(2) {
-  .button-counter-wrapper {
-    transform: translateX(22px);
-  }
-}
