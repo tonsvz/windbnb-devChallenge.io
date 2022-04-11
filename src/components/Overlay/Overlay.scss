@@ -36,7 +36,6 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  //   background-color: blue;
 
   .guest-input {
     display: flex;
@@ -139,6 +138,11 @@
         cursor: pointer;
         color: #4f4f4f;
         font-family: "Mulish", sans-serif;
+        transition: 0.3s ease-in;
+        &:hover{  
+          color:#101010;
+          transform: scale(1.1);
+        }
       }
     }
   }
@@ -165,6 +169,11 @@
     font-family: "Mulish", sans-serif;
     cursor: pointer;
     font-size: 16px;
+    transition: 0.3s ease-in;
+
+    &:hover{
+      background-color:#e67979
+    }
   }
 }
 

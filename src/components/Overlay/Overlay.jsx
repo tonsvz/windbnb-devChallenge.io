@@ -18,6 +18,18 @@ const Overlay = ({ toggleStatus }) => {
     city4: "Vaasa",
   };
 
+  const guestCapacityFilter = data.filter((e) => {
+    return e.maxGuests > 9;
+  });
+
+  const cityFilter = data.filter((e) => {
+    return (
+      e.city === City &&
+      e.maxGuests > adultCounter + childCounter &&
+      e.country === "Finland"
+    );
+  });
+
   return (
     <div
       className={
@@ -36,7 +48,8 @@ const Overlay = ({ toggleStatus }) => {
             <ul>
               <li
                 onClick={() => {
-                  setCity(`${cities.city1}, Finland`);
+                  setCity(`${cities.city1}`);
+                  console.log(City);
                 }}
               >
                 <MdLocationOn className="location-icon" /> &nbsp; Helsinki,
@@ -101,7 +114,12 @@ const Overlay = ({ toggleStatus }) => {
           </div>
         </div>
         <div className="button-wrapper">
-          <button type="submit">
+          <button
+            type="submit"
+            onClick={() => {
+              console.log(cityFilter);
+            }}
+          >
             <FaSearch /> Search
           </button>
         </div>

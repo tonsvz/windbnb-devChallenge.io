@@ -71,7 +71,12 @@
         color: #eb5757;
         width: 20px;
         height: 20px;
+        transition: 0.3s ease-in;
+        &:hover{
+          transform: scale(1.2);
+        }
       }
+      
     }
   }
 }
