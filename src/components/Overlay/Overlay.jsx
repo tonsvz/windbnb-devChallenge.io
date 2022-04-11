@@ -9,7 +9,7 @@ const Overlay = ({ toggleStatus }) => {
   const [adultCounter, setAdultCounter] = useState(0);
   const [childCounter, setChildCounter] = useState(0);
   const [petCounter, setPetCounter] = useState(0);
-  const [City, setCity] = useState("Whole, Finland ");
+  const [City, setCity] = useState("Set Location");
 
   const cities = {
     city1: "Helsinki",
@@ -17,10 +17,6 @@ const Overlay = ({ toggleStatus }) => {
     city3: "Oulu",
     city4: "Vaasa",
   };
-
-  const guestCapacityFilter = data.filter((e) => {
-    return e.maxGuests > 9;
-  });
 
   const cityFilter = data.filter((e) => {
     return (
@@ -48,7 +44,7 @@ const Overlay = ({ toggleStatus }) => {
             <ul>
               <li
                 onClick={() => {
-                  setCity(`${cities.city1}`);
+                  setCity(`${cities.city1}, Finland`);
                   console.log(City);
                 }}
               >

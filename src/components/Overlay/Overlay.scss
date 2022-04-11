@@ -100,6 +100,16 @@
     align-items: flex-start;
     flex-direction: column;
 
+    &::after {
+      content: ", Finland";
+      font-size: 14px;
+      font-family: "Mulish", sans-serif;
+      transform: translateY(-12px);
+      margin-left: 71px;
+      color: #101010;
+      display: none;
+    }
+
     p {
       font-size: 10px;
       font-weight: 800;
@@ -139,8 +149,8 @@
         color: #4f4f4f;
         font-family: "Mulish", sans-serif;
         transition: 0.3s ease-in;
-        &:hover{  
-          color:#101010;
+        &:hover {
+          color: #101010;
           transform: scale(1.1);
         }
       }
@@ -171,8 +181,8 @@
     font-size: 16px;
     transition: 0.3s ease-in;
 
-    &:hover{
-      background-color:#e67979
+    &:hover {
+      background-color: #e67979;
     }
   }
 }
