@@ -17,6 +17,10 @@ const Header = () => {
     console.log(buttonToggler);
   };
 
+  const handler = (e) => {
+    console.log(e);
+  };
+
   return (
     <div className="header-container">
       <div className="title">
@@ -24,7 +28,6 @@ const Header = () => {
         <h1>windbnb</h1>
       </div>
 
-      <Overlay toggleStatus={toggler} />
       <div className="input-container">
         <button
           onClick={() => {

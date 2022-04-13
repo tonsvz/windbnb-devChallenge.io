@@ -5,11 +5,11 @@ import { MdLocationOn } from "react-icons/md";
 import Counter from "../Counter/Counter";
 import data from "../stays.json";
 
-const Overlay = ({ toggleStatus }) => {
+const Overlay = ({ toggleStatus, dataSender }) => {
   const [adultCounter, setAdultCounter] = useState(0);
   const [childCounter, setChildCounter] = useState(0);
   const [petCounter, setPetCounter] = useState(0);
-  const [City, setCity] = useState("Set Location");
+  const [City, setCity] = useState("Whole");
 
   const cities = {
     city1: "Helsinki",
@@ -18,13 +18,18 @@ const Overlay = ({ toggleStatus }) => {
     city4: "Vaasa",
   };
 
-  const cityFilter = data.filter((e) => {
-    return (
-      e.city === City &&
-      e.maxGuests > adultCounter + childCounter &&
-      e.country === "Finland"
-    );
-  });
+  const cityFilter = () => {
+    const dataFilter = data.filter((e) => {
+      return (
+        e.city === City &&
+        e.maxGuests > adultCounter + childCounter &&
+        e.country === "Finland"
+      );
+    });
+    {
+      dataSender(dataFilter);
+    }
+  };
 
   return (
     <div
@@ -38,13 +43,13 @@ const Overlay = ({ toggleStatus }) => {
         <div className="location-wrapper">
           <div className="location-input">
             <p>Location</p>
-            <div>{City}</div>
+            <div>{`${City}, Finland`}</div>
           </div>
           <div className="location-list">
             <ul>
               <li
                 onClick={() => {
-                  setCity(`${cities.city1}, Finland`);
+                  setCity(cities.city1);
                   console.log(City);
                 }}
               >
@@ -53,7 +58,7 @@ const Overlay = ({ toggleStatus }) => {
               </li>
               <li
                 onClick={() => {
-                  setCity(`${cities.city2}, Finland`);
+                  setCity(cities.city2);
                 }}
               >
                 {" "}
@@ -61,7 +66,7 @@ const Overlay = ({ toggleStatus }) => {
               </li>
               <li
                 onClick={() => {
-                  setCity(`${cities.city3}, Finland`);
+                  setCity(cities.city3);
                 }}
               >
                 {" "}
@@ -69,7 +74,7 @@ const Overlay = ({ toggleStatus }) => {
               </li>
               <li
                 onClick={() => {
-                  setCity(`${cities.city4}, Finland`);
+                  setCity(cities.city4);
                 }}
               >
                 {" "}
@@ -110,12 +115,7 @@ const Overlay = ({ toggleStatus }) => {
           </div>
         </div>
         <div className="button-wrapper">
-          <button
-            type="submit"
-            onClick={() => {
-              console.log(cityFilter);
-            }}
-          >
+          <button type="submit" onClick={cityFilter}>
             <FaSearch /> Search
           </button>
         </div>
