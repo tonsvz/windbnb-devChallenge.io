@@ -5,7 +5,7 @@ import { MdLocationOn } from "react-icons/md";
 import Counter from "../Counter/Counter";
 import data from "../stays.json";
 
-const Overlay = ({ toggleStatus, dataSender }) => {
+const Overlay = ({ toggleStatus, dataSender, guestSender }) => {
   const [adultCounter, setAdultCounter] = useState(0);
   const [childCounter, setChildCounter] = useState(0);
   const [petCounter, setPetCounter] = useState(0);
@@ -31,6 +31,13 @@ const Overlay = ({ toggleStatus, dataSender }) => {
     }
   };
 
+  const guestFilter = () => {
+    data.filter((e) => {
+      return e.maxGuests > adultCounter + childCounter;
+    });
+    guestSender(guestFilter);
+  };
+
   return (
     <div
       className={
@@ -50,7 +57,7 @@ const Overlay = ({ toggleStatus, dataSender }) => {
               <li
                 onClick={() => {
                   setCity(cities.city1);
-                  console.log(City);
+                  // console.log(City);
                 }}
               >
                 <MdLocationOn className="location-icon" /> &nbsp; Helsinki,

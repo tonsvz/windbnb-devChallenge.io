@@ -5,17 +5,27 @@ import { AiFillStar } from "react-icons/ai";
 import Overlay from "../Overlay/Overlay";
 
 const Main = () => {
-  const [city, setCity] = useState("");
-
+  const [city, setCity] = useState(null);
+  const [maxGuests, setMaxGuests] = useState(0);
   const dataHandler = (data) => {
     const newData = data[0] ? data[0].city : null;
-    console.log(newData);
     setCity(newData);
+    console.log(city);
+
+    const newMaxGuests = data;
+    console.log(newMaxGuests);
+    guestHandler();
+  };
+
+  const guestHandler = (e) => {
+    const newMaxGuests = e[0];
+    console.log("trigger");
+    console.log(newMaxGuests);
   };
 
   return (
     <>
-      <Overlay dataSender={dataHandler} />
+      <Overlay dataSender={dataHandler} guestSender={guestHandler} />
       <div className="main-container">
         <div className="main-title">
           <h2>Stays in Finland</h2>
@@ -27,7 +37,7 @@ const Main = () => {
         <div className="places-gallery places-gallery-shadow">
           {placesData
             .filter((e) => {
-              if (city === "") {
+              if (city === null) {
                 return e;
               } else if (e.city === city) {
                 return e;
