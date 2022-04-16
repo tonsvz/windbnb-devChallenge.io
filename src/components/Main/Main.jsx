@@ -6,20 +6,18 @@ import Overlay from "../Overlay/Overlay";
 
 const Main = () => {
   const [city, setCity] = useState(null);
-  const [maxGuests, setMaxGuests] = useState(0);
+  const [maxGuests, setMaxGuests] = useState([]);
   const dataHandler = (data) => {
-    const newData = data[0] ? data[0].city : null;
+    const newData = data.map((e) => {
+      return e.city;
+    });
     setCity(newData);
-    console.log(city);
-
-    const newMaxGuests = data;
-    console.log(newMaxGuests);
-    guestHandler();
+    console.log(data);
   };
 
-  const guestHandler = (e) => {
-    const newMaxGuests = e[0];
-    console.log("trigger");
+  const guestHandler = (data) => {
+    const newMaxGuests = data;
+    setMaxGuests(newMaxGuests);
     console.log(newMaxGuests);
   };
 
@@ -38,8 +36,8 @@ const Main = () => {
           {placesData
             .filter((e) => {
               if (city === null) {
-                return e;
-              } else if (e.city === city) {
+                console.log(e.maxGuests);
+              } else if (e.city === city[0]) {
                 return e;
               }
             })

@@ -8,7 +8,6 @@ import data from "../stays.json";
 const Overlay = ({ toggleStatus, dataSender, guestSender }) => {
   const [adultCounter, setAdultCounter] = useState(0);
   const [childCounter, setChildCounter] = useState(0);
-  const [petCounter, setPetCounter] = useState(0);
   const [City, setCity] = useState("Whole");
 
   const cities = {
@@ -20,22 +19,16 @@ const Overlay = ({ toggleStatus, dataSender, guestSender }) => {
 
   const cityFilter = () => {
     const dataFilter = data.filter((e) => {
-      return (
-        e.city === City &&
-        e.maxGuests > adultCounter + childCounter &&
-        e.country === "Finland"
-      );
+      return e.city === City && e.maxGuests > adultCounter + childCounter;
     });
+    const guestFilter = dataFilter.map((e) => {
+      return e.maxGuests;
+    });
+    // console.log(guestFilter);
     {
       dataSender(dataFilter);
+      guestSender(guestFilter);
     }
-  };
-
-  const guestFilter = () => {
-    data.filter((e) => {
-      return e.maxGuests > adultCounter + childCounter;
-    });
-    guestSender(guestFilter);
   };
 
   return (
@@ -96,8 +89,7 @@ const Overlay = ({ toggleStatus, dataSender, guestSender }) => {
             <p>
               <span>
                 {adultCounter} {adultCounter !== 1 ? "Adults" : "Adult"}, &nbsp;
-                {childCounter} {childCounter !== 1 ? "Children" : "Child"},
-                &nbsp;{petCounter} {petCounter !== 1 ? "Pets" : "Pet"}
+                {childCounter} {childCounter !== 1 ? "Children" : "Child"}
               </span>
             </p>
           </div>
@@ -113,11 +105,6 @@ const Overlay = ({ toggleStatus, dataSender, guestSender }) => {
               age="Age: 2 - 12"
               increment={() => setChildCounter(childCounter + 1)}
               decrement={() => setChildCounter(Math.max(0, childCounter - 1))}
-            />
-            <Counter
-              guest="Pets "
-              increment={() => setPetCounter(petCounter + 1)}
-              decrement={() => setPetCounter(Math.max(0, petCounter - 1))}
             />
           </div>
         </div>
