@@ -4,7 +4,6 @@ import { FaSearch } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import Counter from "../Counter/Counter";
 import data from "../stays.json";
-import Header from "../Header/Header";
 import Main from "../Main/Main";
 
 const Overlay = ({ toggleStatus, guestSender, citySender }) => {
