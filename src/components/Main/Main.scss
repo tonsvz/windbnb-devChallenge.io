@@ -6,6 +6,10 @@
   transition: transform 250ms, visibility 150ms ease-in;
 }
 
+.web-title {
+  cursor: pointer;
+}
+
 .card-img:hover {
   cursor: pointer;
   transform: scale(1.15);

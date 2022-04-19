@@ -3,41 +3,119 @@ import placesData from "../stays.json";
 import "./Main.scss";
 import { AiFillStar } from "react-icons/ai";
 import Overlay from "../Overlay/Overlay";
+import { GrClose } from "react-icons/gr";
+import { FaSearch } from "react-icons/fa";
 
 const Main = () => {
-  const [city, setCity] = useState(null);
-  const [maxGuests, setMaxGuests] = useState([]);
-  const dataHandler = (data) => {
-    const newData = data.map((e) => {
-      return e.city;
-    });
-    setCity(newData);
-    console.log(data);
+  const [city, setCity] = useState("Whole,Finland");
+  const [maxGuests, setMaxGuests] = useState("Add Guests");
+  //  Header
+  const [toggler, setToggler] = useState(true);
+  const [buttonToggler, setButtonToggler] = useState(false);
+
+  const togglerClass = () => {
+    setToggler(!toggler);
+    setButtonToggler(!buttonToggler);
   };
 
-  const guestHandler = (data) => {
-    const newMaxGuests = data;
-    setMaxGuests(newMaxGuests);
-    console.log(newMaxGuests);
+  const buttonTogglerClass = () => {
+    setButtonToggler(!buttonToggler);
+    console.log(buttonToggler);
+  };
+
+  const guestHandler = (guests) => {
+    setMaxGuests(guests);
+    if (guests === 0) {
+      setMaxGuests("Add Guests");
+    }
+  };
+
+  const cityHandler = (city) => {
+    setCity(city);
   };
 
   return (
     <>
-      <Overlay dataSender={dataHandler} guestSender={guestHandler} />
+      <Overlay
+        guestSender={guestHandler}
+        citySender={cityHandler}
+        toggleStatus={toggler}
+      />
+
+      <div className="header-container">
+        <div className="title">
+          <img src="/images/triangleLogo.png" alt="" />
+
+          <h1
+            className="web-title"
+            onClick={() => {
+              document.location.reload();
+            }}
+          >
+            windbnb
+          </h1>
+        </div>
+        <div className="input-container">
+          <button
+            onClick={() => {
+              togglerClass();
+              buttonTogglerClass();
+            }}
+          >
+            {city}
+          </button>
+          <button
+            onClick={() => {
+              togglerClass();
+              buttonTogglerClass();
+            }}
+          >
+            {maxGuests}
+          </button>
+          <button onClick={togglerClass}>
+            {<FaSearch className="search-icon" />}
+          </button>
+        </div>
+        <button
+          className={buttonToggler ? "close-button" : "close-button-hide"}
+          onClick={() => {
+            togglerClass();
+            buttonTogglerClass();
+          }}
+        >
+          <GrClose />
+        </button>
+      </div>
+
       <div className="main-container">
         <div className="main-title">
           <h2>Stays in Finland</h2>
           <div className="stays">
-            <p>{placesData.length}+ stays</p>
+            <p>
+              {
+                placesData.filter((e) => {
+                  if (maxGuests === "Add Guests") {
+                    return e;
+                  } else if (e.city === city && e.maxGuests >= maxGuests) {
+                    return e;
+                  }
+                }).length
+              }
+              &nbsp; stays
+            </p>
           </div>
         </div>
 
         <div className="places-gallery places-gallery-shadow">
           {placesData
             .filter((e) => {
-              if (city === null) {
-                console.log(e.maxGuests);
-              } else if (e.city === city[0]) {
+              if (
+                city === 'Whole,Finland"' ||
+                maxGuests === "Add Guests" ||
+                maxGuests === 0
+              ) {
+                return e;
+              } else if (e.city === city && e.maxGuests >= maxGuests) {
                 return e;
               }
             })
