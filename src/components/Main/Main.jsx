@@ -10,17 +10,17 @@ const Main = () => {
   const [city, setCity] = useState("Whole,Finland");
   const [maxGuests, setMaxGuests] = useState("Add Guests");
   //  Header
-  const [toggler, setToggler] = useState(true);
-  const [buttonToggler, setButtonToggler] = useState(false);
+  const [overlayToggler, setOverlayToggler] = useState(true);
+  const [closeButton, setCloseButton] = useState(false);
 
-  const togglerClass = () => {
-    setToggler(!toggler);
-    setButtonToggler(!buttonToggler);
+  const overlayBtnHandler = () => {
+    setOverlayToggler(!overlayToggler);
+    setCloseButton(!closeButton);
   };
 
-  const buttonTogglerClass = () => {
-    setButtonToggler(!buttonToggler);
-    console.log(buttonToggler);
+  const closeBtnHandler = () => {
+    setCloseButton(!closeButton);
+    console.log(closeButton);
   };
 
   const guestHandler = (guests) => {
@@ -39,7 +39,7 @@ const Main = () => {
       <Overlay
         guestSender={guestHandler}
         citySender={cityHandler}
-        toggleStatus={toggler}
+        toggleStatus={overlayToggler}
       />
 
       <div className="header-container">
@@ -58,29 +58,29 @@ const Main = () => {
         <div className="input-container">
           <button
             onClick={() => {
-              togglerClass();
-              buttonTogglerClass();
+              overlayBtnHandler();
+              closeBtnHandler();
             }}
           >
             {city}
           </button>
           <button
             onClick={() => {
-              togglerClass();
-              buttonTogglerClass();
+              overlayBtnHandler();
+              closeBtnHandler();
             }}
           >
             {maxGuests}
           </button>
-          <button onClick={togglerClass}>
+          <button onClick={overlayBtnHandler}>
             {<FaSearch className="search-icon" />}
           </button>
         </div>
         <button
-          className={buttonToggler ? "close-button" : "close-button-hide"}
+          className={closeButton ? "close-button" : "close-button-hide"}
           onClick={() => {
-            togglerClass();
-            buttonTogglerClass();
+            overlayBtnHandler();
+            closeBtnHandler();
           }}
         >
           <GrClose />
@@ -89,7 +89,11 @@ const Main = () => {
 
       <div className="main-container">
         <div className="main-title">
-          <h2>Stays in Finland</h2>
+          <div className="stays-container">
+            <h2>Stays in Finland</h2>
+            <p>{city}</p>
+          </div>
+
           <div className="stays">
             <p>
               {

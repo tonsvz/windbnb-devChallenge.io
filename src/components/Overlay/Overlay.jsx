@@ -10,15 +10,6 @@ const Overlay = ({ toggleStatus, guestSender, citySender }) => {
   const [adultCounter, setAdultCounter] = useState(0);
   const [childCounter, setChildCounter] = useState(0);
   const [City, setCity] = useState("Whole");
-  const [isOpen, setIsOpen] = useState(false);
-
-  const cities = {
-    city1: "Helsinki",
-    city2: "Turku",
-    city3: "Oulu",
-    city4: "Vaasa",
-  };
-
   const guestFiltered = adultCounter + childCounter;
   const cityFiltered = City;
 
@@ -46,8 +37,11 @@ const Overlay = ({ toggleStatus, guestSender, citySender }) => {
               <ul>
                 <li
                   onClick={() => {
-                    setCity(cities.city1);
-                    // console.log(City);
+                    data.map((e) => {
+                      if (e.city === "Helsinki") {
+                        setCity(e.city);
+                      }
+                    });
                   }}
                 >
                   <MdLocationOn className="location-icon" /> &nbsp; Helsinki,
@@ -55,7 +49,11 @@ const Overlay = ({ toggleStatus, guestSender, citySender }) => {
                 </li>
                 <li
                   onClick={() => {
-                    setCity(cities.city2);
+                    data.map((e) => {
+                      if (e.city === "Turku") {
+                        setCity(e.city);
+                      }
+                    });
                   }}
                 >
                   {" "}
@@ -64,7 +62,11 @@ const Overlay = ({ toggleStatus, guestSender, citySender }) => {
                 </li>
                 <li
                   onClick={() => {
-                    setCity(cities.city3);
+                    data.map((e) => {
+                      if (e.city === "Oulu") {
+                        setCity(e.city);
+                      }
+                    });
                   }}
                 >
                   {" "}
@@ -73,7 +75,11 @@ const Overlay = ({ toggleStatus, guestSender, citySender }) => {
                 </li>
                 <li
                   onClick={() => {
-                    setCity(cities.city4);
+                    data.map((e) => {
+                      if (e.city === "Vaasa") {
+                        setCity(e.city);
+                      }
+                    });
                   }}
                 >
                   {" "}

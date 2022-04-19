@@ -139,17 +139,31 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  h2 {
-    display: flex;
+
+  .stays-container{
+    h2 {
+      display: flex;
+      margin-left: 60px;
+      font-weight: 700;
+      color: #333333;
+      font-family: "Montserrat", sans-serif;
+    }
+  
+  }
+
+  p:nth-child(2){
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 18px;
     margin-left: 60px;
-    font-weight: 700;
-    color: #333333;
-    font-family: "Montserrat", sans-serif;
+    width: auto;
+    text-align: start;
   }
 
   p {
+    margin-top: 10px;
     color: red;
-    margin-right: 55px;
+    margin-right: 75px;
     font-family: "Montserrat", sans-serif;
     color: #4f4f4f;
     font-weight: 500;
