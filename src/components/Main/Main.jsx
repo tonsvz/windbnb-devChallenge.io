@@ -7,7 +7,7 @@ import { GrClose } from "react-icons/gr";
 import { FaSearch } from "react-icons/fa";
 
 const Main = () => {
-  const [city, setCity] = useState("Whole,Finland");
+  const [city, setCity] = useState("Whole, Finland");
   const [maxGuests, setMaxGuests] = useState("Add Guests");
   //  Header
   const [overlayToggler, setOverlayToggler] = useState(true);
@@ -113,11 +113,7 @@ const Main = () => {
         <div className="places-gallery places-gallery-shadow">
           {placesData
             .filter((e) => {
-              if (
-                city === 'Whole,Finland"' ||
-                maxGuests === "Add Guests" ||
-                maxGuests === 0
-              ) {
+              if (city === "Whole, Finland" || maxGuests === "Add Guests") {
                 return e;
               } else if (e.city === city && e.maxGuests >= maxGuests) {
                 return e;
@@ -163,6 +159,13 @@ const Main = () => {
                 </div>
               );
             })}
+        </div>
+        <div className="copyright">
+          <p>
+            created by{" "}
+            <a href="https://www.instagram.com/tonsofcode">tonsofcode</a> -
+            devChallenges.io
+          </p>
         </div>
       </div>
     </>
